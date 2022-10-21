@@ -12,11 +12,11 @@ O bootcamp Unimed-BH Ciência de Dados é para profissionais que já atuam com c
  INTRODUÇÃO AO GIT E GITHUB (5HR)
  CRIANDO SEU PRIMEIRO REPOSITÓRIO NO GITHUB PARA COMPARTILHAR SEU PROGRESSO
  
- ### PYTHON PARA CIENCIA DE DADOS
- Ambiente de Desenvolvimento e Primeiros Passos com Python 
- Conhecendo a Linguagem Python
- Tipos de operadores com Python 
- Estruturas condicionais e de repetição com Python 
+ ### PYTHON PARA CIENCIA DE DADOS:
+   Ambiente de Desenvolvimento e Primeiros Passos com Python 
+   Conhecendo a Linguagem Python
+   Tipos de operadores com Python 
+   Estruturas condicionais e de repetição com Python 
  Manipulação de strings com Python 
  Desafios Iniciais Py - Unimed BH
  Análise de dados com Python e Pandas
