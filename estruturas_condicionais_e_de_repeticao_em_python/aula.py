@@ -1,4 +1,5 @@
 ### CURSO: ESTRUTURAS CONDICIONAIS E DE REPETIÇÃO COM PYTHON 
+# Link: https://web.dio.me/course/estruturas-condicionais-e-de-repeticao-em-python/learning/f9b78902-9c92-4a12-b411-9b78a56b15d1
 # Instrutor: Guilherme Arthur de Carvalho
 
 ### CURSO: TIPOS DE OPERADORES COM PYTHON 
@@ -147,14 +148,51 @@ print(a)
 #    a += 1
 #    print(a)
 
-
 """ Comando for: O comando for é usado para percorrer um objeto iterável. Faz senntido 
 usar for quando sabemos o número exato de vezes que o nosso bloco de código deve ser executado,
 ou quando queremos percorrer um objeto iterável. """
 texto = input("Informe um texto: ")
 VOGAIS = "AEIOU"
 
+#Exemplo utilizando um iterável
 for letra in texto:
     if letra.upper() in VOGAIS:
         print(letra, end="")
-print() #adiciona uma quebra de linha     
+else:        
+    print() #adiciona uma quebra de linha        
+
+#Exemplo utilizando a função built-in range
+for numero in range(0, 51,5):
+    print(numero, end=" ")
+
+""" Comando while: O comando while é usado para repetir um bloco de código várias vezes. Faz sentido
+usar while quando não sabemos o número exato de vezes que nosso bloco de código deve ser executado.""" 
+
+opcao = -1
+
+while opcao != 0:
+    opcao = int(input("[1] Sacar \n[2] Extrato \n[0] Sair \n: "))
+
+    if opcao == 1:
+        print("Sacando...")
+    elif opcao == 2:
+        print("Exibindo o extrato...")
+else:
+    print("Obrigado por usar nosso sistema bancário, até logo!") 
+
+#Estrutura com break
+while True:
+    numero = int(input("Informe um número: "))
+
+    if numero == 10:
+        break
+
+    print(numero)    
+
+#Exemplo com for:
+for numero in range(100):
+    if numero == 10:
+        break #Para quando atingir a execução (10)
+        #continue #Pula a execução (10)
+
+    print(numero, end=" ")   
