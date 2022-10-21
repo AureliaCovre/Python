@@ -8,14 +8,14 @@ Descrição do Bootcamp:
 O bootcamp Unimed-BH Ciência de Dados é para profissionais que já atuam com ciência de dados ou estão começando na carreira. Durante o programa, você vai ter experiências educacionais com Python, banco de dados relacional e não relacional, além de uma imersão Cloud Computer e Machine Learning. Após gerar a certificação de conclusão do bootcamp, a Unimed-BH pretende recrutar talentos para integrar seus times de tecnologia.
 
 ## CURSOS:
- INTRODUÇÃO Á PROGRAMAÇÃO E PENSAMENTO COMPUTACIONAL (5HR)
- INTRODUÇÃO AO GIT E GITHUB (5HR)
- CRIANDO SEU PRIMEIRO REPOSITÓRIO NO GITHUB PARA COMPARTILHAR SEU PROGRESSO
+ - INTRODUÇÃO Á PROGRAMAÇÃO E PENSAMENTO COMPUTACIONAL (5HR)
+ - INTRODUÇÃO AO GIT E GITHUB (5HR)
+ - CRIANDO SEU PRIMEIRO REPOSITÓRIO NO GITHUB PARA COMPARTILHAR SEU PROGRESSO
  
 ### PYTHON PARA CIENCIA DE DADOS:
-Ambiente de Desenvolvimento e Primeiros Passos com Python 
-Conhecendo a Linguagem Python
-Tipos de operadores com Python 
+ - Ambiente de Desenvolvimento e Primeiros Passos com Python 
+ - Conhecendo a Linguagem Python
+ - Tipos de operadores com Python 
 Estruturas condicionais e de repetição com Python 
 Manipulação de strings com Python 
 Desafios Iniciais Py - Unimed BH
