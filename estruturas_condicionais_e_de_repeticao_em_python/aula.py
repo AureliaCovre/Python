@@ -65,7 +65,8 @@ if opcao == 1:
 elif opcao ==2:
     print("Exibindo o extrato... ")
 else:
-    sys.exit("Opção inválida!")  
+    #sys.exit("Opção inválida!")  
+    print("Opção Inválida!)
 
 #-------------
 maior_idade = 18
