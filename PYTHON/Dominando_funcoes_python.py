@@ -1,261 +1,181 @@
-### CURSO: APRENDENDO A UTILIZAR DICIONÁRIOS EM PYTHON 
-# Link: https://web.dio.me/course/aprendendo-a-utilizar-dicionarios-em-python/learning/d60c0324-9369-4e88-9354-abc1dfc876a7?back=/track/geracao-tech-unimed-bh-ciencia-de-dados&tab=undefined&moduleId=undefined
-#GitHub: https://github.com/digitalinnovationone/trilha-python-dio/tree/01_estrutura_de_dados/01%20-%20Estrutura%20de%20dados/04%20-%20Dicion%C3%A1rios
+### CURSO: DOMINANDO FUNÇÕES PYTHON
+# Link: https://web.dio.me/course/dominando-funcoes-python/learning/065ecbd9-7623-486d-b10f-28efc150d00f?back=/track/geracao-tech-unimed-bh-ciencia-de-dados&tab=undefined&moduleId=undefined
+#GitHub: https://github.com/digitalinnovationone/trilha-python-dio/tree/01_estrutura_de_dados/01%20-%20Estrutura%20de%20dados/05%20-%20Fun%C3%A7%C3%B5es
 # Instrutor: Guilherme Arthur de Carvalho
 
+
+""" Objetivo Geral: Entender como funcionam as funções em Python."""
+
+""" O que são funções: Função é um bloco de código identificado por um nome e pode receber uma lista
+de parâmetros, esses parâmetros podem não ter valores padrões. Usar funções torna o código mais 
+legível e possibilita o reaproveitamento de código. Programar baseado em funções, é o mesmo que dizer
+que esta,ps ŕpgramando de maneira estruturada.  """
+
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=
-# DICIONÁRIOS
-"""Objetivo geral: Entender o funcionamento da estrutura de dados dicionário """
-
-""" Um dicionário é um conjunto não ordenado de pares chave:valor, onde as chaves são únicas
-em uma dada instância do dicionário. Dicionários são delimitados por chaves: {}, 
-e contém uma lista de pares chave: valor separada por vírgulas."""
+# 
 
 # -------------
-print("Declarando Dicionários...")
-pessoa = {"nome": "Guilherme", "idade": 28}
-print(pessoa)
+# Primeira função
+def exibir_mensagem():
+    print("Olá mundo!")
 
-pessoa = dict(nome="Guilherme", idade=28)
-print(pessoa)
 
-#Adicionando uma chave ao dicionário já existente:
-pessoa["telefone"] = "3333-1234"  # {"nome": "Guilherme", "idade": 28, "telefone": "3333-1234"}
-print(pessoa)
+def exibir_mensagem_2(nome):
+    print(f"Seja bem vindo {nome}!")
+
+
+def exibir_mensagem_3(nome="Anônimo"):
+    print(f"Seja bem vindo {nome}!")
+
+
+exibir_mensagem()
+exibir_mensagem_2(nome="Guilherme")
+exibir_mensagem_3()
+exibir_mensagem_3(nome="Chappie")
+
 print("--------------")
 
 # -------------
-print("Acessando Dados...")
-dados = {"nome": "Guilherme", "idade": 28, "telefone": "3333-1234"}
+""" Retornando valores: Para retornar um valor, utilizamos a palavra reservada return. 
+Toda função Python retorna None por padrão. Diferente de outras linguagens de programação, em 
+Python uma função pode retornar mais de um valor. """
 
-print(dados["nome"])  # "Guilherme"
-print(dados["idade"])  # 28
-print(dados["telefone"])  # "3333-1234"
+#Retornano da função
+def calcular_total(numeros):
+    return sum(numeros)
 
-dados["nome"] = "Maria"
-dados["idade"] = 18
-dados["telefone"] = "9988-1781"
 
-print(dados)  # {"nome": "Maria", "idade": 18, "telefone": "9988-1781"}
+def retorna_antecessor_e_sucessor(numero):
+    antecessor = numero - 1
+    sucessor = numero + 1
+
+    return antecessor, sucessor
+
+
+print(calcular_total([10, 20, 34]))  # 64
+print(retorna_antecessor_e_sucessor(10))  # (9, 11)
 print("--------------")
 
 # -------------
-print("""Dicionários Aninhados: Dicionários podem armazenar qualquer tipo de objeto em Python como 
-valor, desde que a CHAVE para esse valor seja um objeto imutável como (strings e números)""")
+""" Argumentos nomeados: Funções também podem ser chamadas usando argumentos nomeados da forma 
+chave=valor. """
 
-contatos = {
-    "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
-    "giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
-    "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
-    "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
-}
+#Argumentos nomeados
+def salvar_carro(marca, modelo, ano, placa):
+    # salva carro no banco de dados...
+    print(f"Carro inserido com sucesso! {marca}/{modelo}/{ano}/{placa}")
 
-#Para acessar o valor telefone, passamos a chave unica e a chave telefone:
-telefone = contatos["giovanna@gmail.com"]["telefone"]  # "3443-2121"
-print("Telefone: ",telefone)
+
+salvar_carro("Fiat", "Palio", 1999, "ABC-1234")
+salvar_carro(marca="Fiat", modelo="Palio", ano=1999, placa="ABC-1234")
+salvar_carro(**{"marca": "Fiat", "modelo": "Palio", "ano": 1999, "placa": "ABC-1234"})
 print("--------------")
 
 # -------------
-print("Iterando Dicionários...")
-contatos = {
-    "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
-    "giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
-    "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
-    "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
-}
+""" Args e Kwargs: Podemos combinar parâmetros obrigatórios com args e kwargs. Quando esses são 
+definidos (*args e **kwargs), o método recebe os valores como tuplas e dicionário respectivamente.
+    args = vem como tuplas
+    kwargs = vem como dicionário """
 
-for chave in contatos:
-    print(chave, contatos[chave])
+# args_kwargs
+def exibir_poema(data_extenso, *args, **kwargs):
+    texto = "\n".join(args)
+    meta_dados = "\n".join([f"{chave.title()}: {valor}" for chave, valor in kwargs.items()])
+    mensagem = f"{data_extenso}\n\n{texto}\n\n{meta_dados}"
+    print(mensagem)
 
-print("-" * 10)
 
-for chave, valor in contatos.items():
-    print(chave, valor)
+exibir_poema(
+    "Quinta-feira, 27 de Outubro de 2022",
+    "Zen of Python",
+    "Beautiful is better than ugly.",
+    "Explicit is better than implicit.",
+    "Simple is better than complex.",
+    "Complex is better than complicated.",
+    "Flat is better than nested.",
+    "Sparse is better than dense.",
+    "Readability counts.",
+    "Special cases aren't special enough to break the rules.",
+    "Although practicality beats purity.",
+    "Errors should never pass silently.",
+    "Unless explicitly silenced.",
+    "In the face of ambiguity, refuse the temptation to guess.",
+    "There should be one-- and preferably only one --obvious way to do it.",
+    "Although that way may not be obvious at first unless you're Dutch.",
+    "Now is better than never.",
+    "Although never is often better than *right* now.",
+    "If the implementation is hard to explain, it's a bad idea.",
+    "If the implementation is easy to explain, it may be a good idea.",
+    "Namespaces are one honking great idea -- let's do more of those!",
+    autor="Tim Peters",
+    ano=1999,
+)
+
 print("--------------")
 
 # -------------
-print("Método Clear: Apaga todos os valore sdo dicionário....")
+""" Parâmetros especiais: Por padrão, argumentos podem ser passados para uma função Python tanto 
+por posição quanto explicitamente pelo nome. Para uma melhor legibilidade e desempenho, faz sentido
+restringir a maneira pelo qual argumentos possam ser passados, assim um desenvolvedor precisa apenas
+olhar para a definição da função para dererminar se os itens são passados por posição, 
+por posição e nome, ou por nome. """
 
-contatos = {
-    "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
-    "giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
-    "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
-    "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
-}
+#Parametros somente por posição copy.py
+def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
 
-contatos.clear()
-print(contatos)  # {}
+
+criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")
+criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
+
 print("--------------")
 
 # -------------
-print("Método Copy: Gera uma cópia do dicionário...")
+#Parametros somente por nome
+def criar_carro(modelo, ano, placa, /, *, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
 
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
 
-copia = contatos.copy()
-copia["guilherme@gmail.com"] = {"nome": "Gui"}
+# criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")
+criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
 
-print(contatos["guilherme@gmail.com"])  # {"nome": "Guilherme", "telefone": "3333-2221"}
-
-print(copia["guilherme@gmail.com"])  # {"nome": "Gui"}
 print("--------------")
 
 # -------------
-print("""Método Fromkeys: Cria a chave sem vincular valores ou cria um conjunto de chaves com 
-mesmo valor...""")
+""" Objetos de primeira classe: Em Python tudo é objeto, desa forma funções também são objetos o que as 
+também são objetos o que as tornam objetos de primeira classe. Com isso podemos atribuir funções a 
+variáveis, passá-las como parâmetro para funções, usá-las como valores em estruturas de dados (listas, 
+tuplas, dicionários, etc) e usar como valor de retorno para uma função (closures). """
 
-resultado = dict.fromkeys(["nome", "telefone"])  # {"nome": None, "telefone": None}
-print(resultado)
+def somar(a, b):
+    return a + b
 
-resultado = dict.fromkeys(["nome", "telefone"], "vazio")  # {"nome": "vazio", "telefone": "vazio"}
-print(resultado)
+
+def exibir_resultado(a, b, funcao):
+    resultado = funcao(a, b)
+    print(f"O resultado da operação {a} + {b} = {resultado}")
+
+
+exibir_resultado(10, 10, somar)  # O resultado da operação 10 + 10 = 20
+
 print("--------------")
 
 # -------------
-print(""" Método GET: Utilizado quando não temos certeza se a chave existe no dicionário. Aceita
-tambem um valor default, se le não encontra o 1 argumento ele retorna o 2 ...""")
+""" Escopo Local e Global: Python trabalha com escopo local e global, dentro do bloco da função o escopo
+é local. Portanto alterações ali feitas em objetos imutáveis serão perdidas quando o método terminar de 
+ser executado. Para usar objetos globais utilizamos a palavra-chave global, que informa ao interpretador
+que a variável que está sendo manipulada no escopo local é global. Essa NÃO é uma boa prática e deve ser 
+evitada. """
 
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
+salario = 2000
 
-# contatos["chave"]  # KeyError #Simulando um erro
 
-resultado = contatos.get("chave")  # None
-print(resultado)
+def salario_bonus(bonus):
+    global salario
+    salario += bonus
+    return salario
 
-resultado = contatos.get("chave", {})  # {}
-print(resultado)
 
-resultado = contatos.get(
-    "guilherme@gmail.com", {}
-)  # {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}
-print(resultado)
-print("--------------")
-
-# -------------
-print(""" Método ITEMS: Retorna uma lista de tuplas...""")
-# Items
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
-
-resultado = contatos.items()  # dict_items([('guilherme@gmail.com', {'nome': 'Guilherme', 'telefone': '3333-2221'})])
-print(resultado)
-print("--------------")
-
-# -------------
-print(""" Método Keys: Retorna apenas as chaves do dicionário ...""")
-# Keys
-
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
-
-resultado = contatos.keys()  # dict_keys(['guilherme@gmail.com'])
-print(resultado)
-print("--------------")
-
-# -------------
-print(""" Método POP: Remove uma chave no dicionário e mostra o que esta removendo ...""")
-# pop
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
-
-resultado = contatos.pop("guilherme@gmail.com")  # {'nome': 'Guilherme', 'telefone': '3333-2221'}
-print(resultado)
-
-resultado = contatos.pop("guilherme@gmail.com", {})  # {}
-#resultado = contatos.pop("guilherme@gmail.com", "não encontrado")  # é o mesmo q a linha acima
-print(resultado)
-print("--------------")
-
-# -------------
-print(""" Método POPITEM: Remove os itens na sequencia ...""")
-# popitem
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
-
-resultado = contatos.popitem()  # ('guilherme@gmail.com', {'nome': 'Guilherme', 'telefone': '3333-2221'})
-print(resultado)
-
-# contatos.popitem()  # KeyError
-print("--------------")
-
-# -------------
-print(""" Método SETDEFAULT: Se o atributo não constar no dicionário ele add, se constar 
-ele respeita a que já existe não altera ...""")
-# setdefault
-contato = {"nome": "Guilherme", "telefone": "3333-2221"}
-
-contato.setdefault("nome", "Giovanna")  # "Guilherme"
-print(contato)  # {'nome': 'Guilherme', 'telefone': '3333-2221'}
-
-contato.setdefault("idade", 28)  # 28
-print(contato)  # {'nome': 'Guilherme', 'telefone': '3333-2221', 'idade': 28}
-print("--------------")
-
-# -------------
-print(""" Método UPDATE: Atualiza o dicionário com outro dicionário ...""")
-# update
-contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
-
-contatos.update({"guilherme@gmail.com": {"nome": "Gui"}})
-print(contatos)  # {'guilherme@gmail.com': {'nome': 'Gui'}}
-
-contatos.update({"giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3322-8181"}})
-# {'guilherme@gmail.com': {'nome': 'Gui'}, 'giovanna@gmail.com': {'nome': 'Giovanna', 'telefone': '3322-8181'}}
-print(contatos)
-print("--------------")
-
-# -------------
-print(""" Método VALUES: Retorna os valores, ou seja todos os dicionários que estão amarrados 
-ás chaves  ...""")
-# values
-
-contatos = {
-    "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
-    "giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
-    "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
-    "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
-}
-
-resultado = (
-    contatos.values()
-)  # dict_values([{'nome': 'Guilherme', 'telefone': '3333-2221'}, {'nome': 'Giovanna', 'telefone': '3443-2121'}, {'nome': 'Chappie', 'telefone': '3344-9871'}, {'nome': 'Melaine', 'telefone': '3333-7766'}])  # noqa
-print(resultado)
-print("--------------")
-
-# -------------
-print(""" Método IN: Verifica se uma chave existe ou não no dicionário...""")
-# in
-
-contatos = {
-    "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
-    "giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
-    "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
-    "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
-}
-
-resultado = "guilherme@gmail.com" in contatos  # True
-print(resultado)
-
-resultado = "megui@gmail.com" in contatos  # False
-print(resultado)
-
-resultado = "idade" in contatos["guilherme@gmail.com"]  # False
-print(resultado)
-
-resultado = "telefone" in contatos["giovanna@gmail.com"]  # True
-print(resultado)
-print("--------------")
-
-# -------------
-print(""" Método DEL: Remove objetos ...""")
-
-contatos = {
-    "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},
-    "giovanna@gmail.com": {"nome": "Giovanna", "telefone": "3443-2121"},
-    "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
-    "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
-}
-
-del contatos["guilherme@gmail.com"]["telefone"]
-del contatos["chappie@gmail.com"]
-
-# {'guilherme@gmail.com': {'nome': 'Guilherme'}, 'giovanna@gmail.com': {'nome': 'Giovanna', 'telefone': '3443-2121'}, 'melaine@gmail.com': {'nome': 'Melaine', 'telefone': '3333-7766'}}  # noqa
-print(contatos)
-
+salario_bonus(500)  # 2500
 
